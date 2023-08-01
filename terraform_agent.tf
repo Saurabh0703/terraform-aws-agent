@@ -97,6 +97,7 @@ resource "aws_instance" "ec2" {
       "Project"     = var.tag_project,
       "Owner"       = var.tag_owner,
     })
+)
 
   root_block_device {
     delete_on_termination = var.delete_on_termination
