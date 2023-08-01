@@ -89,7 +89,14 @@ resource "aws_instance" "ec2" {
   source_dest_check       = var.source_dest_check
 
   volume_tags = merge(var.common_tags, tomap({ "Name" : "${var.project_name_prefix}-terraform-agent" }))
-  tags        = merge(var.common_tags, tomap({ "Name" : "${var.project_name_prefix}-terraform-agent" }))
+  tags = merge(
+    var.common_tags,
+    tomap({
+      "Name"        = var.tag_name,
+      "Environment" = var.tag_environment,
+      "Project"     = var.tag_project,
+      "Owner"       = var.tag_owner,
+    })
 
   root_block_device {
     delete_on_termination = var.delete_on_termination
