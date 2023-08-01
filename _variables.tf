@@ -7,7 +7,11 @@ variable "subnet_id" {
   description = "The VPC Subnet IDs to launch in"
   type        = string
 }
-
+variable "instance_type" {
+  description = "The type of instance to start"
+  type        = string
+  default     = "t4g.medium"
+}
 
 variable "project_name_prefix" {
   description = "A string value to describe prefix of all the resources"
