@@ -1,15 +1,24 @@
 data "aws_ami" "amazon-linux-2" {
   most_recent = true
+
   filter {
     name   = "owner-alias"
     values = ["amazon"]
   }
+
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm*"]
+    values = ["amzn2-ami-ecs-hvm*"]
   }
+
+  filter {
+    name   = "architecture"
+    values = ["arm64"]
+  }
+
   owners = ["amazon"]
 }
+
 
 resource "aws_security_group" "terraform_agent_sg" {
   name        = "${var.project_name_prefix}-terraform-agent-sg"
