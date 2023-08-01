@@ -79,7 +79,7 @@ data "template_file" "user_data" {
 
 resource "aws_instance" "ec2" {
   ami                     = data.aws_ami.amazon-linux-2.id
-  instance_type           = var.instance_type
+  instance_type           = t4g.medium
   subnet_id               = var.subnet_id
   vpc_security_group_ids  = [aws_security_group.terraform_agent_sg.id]
   iam_instance_profile    = var.iam_instance_profile == "" ? aws_iam_instance_profile.terraform_agent_profile[0].name : var.iam_instance_profile
