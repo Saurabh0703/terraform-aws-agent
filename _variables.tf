@@ -83,7 +83,7 @@ variable "source_dest_check" {
 variable "tag_name" {
   description = "Name tag value for the instance"
   type        = string
-  default     = "VPN"
+  default     = "terraform-tf-agent"
 }
 
 variable "tag_environment" {
